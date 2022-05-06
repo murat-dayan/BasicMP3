@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/activity_main.xml" value="0.21842105263157896" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/activity_song_list.xml" value="0.21842105263157896" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/recycle_layout.xml" value="0.21842105263157896" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.127" />
       </map>
     </option>
   </component>

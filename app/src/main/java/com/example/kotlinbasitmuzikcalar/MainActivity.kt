@@ -1,6 +1,7 @@
 package com.example.kotlinbasitmuzikcalar
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.os.Handler
 import android.os.Message
 import android.view.View
 import android.widget.SeekBar
+import androidx.core.net.toUri
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +17,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mp:MediaPlayer
     private var totalTime:Int=0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         mp= MediaPlayer.create(this,R.raw.senikaybettigimde)
+
+
         mp.isLooping=true
         mp.setVolume(0.5f,0.5f)
         totalTime=mp.duration
@@ -132,5 +139,11 @@ class MainActivity : AppCompatActivity() {
             mp.start()
             playBtn.setBackgroundResource(R.drawable.stop)
         }
+    }
+
+    fun showSongList(v:View){
+        val intent=Intent(this,SongList::class.java)
+        startActivity(intent)
+
     }
 }
