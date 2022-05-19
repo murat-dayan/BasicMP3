@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/BasicMP33/app/src/main/res/layout/activity_main.xml" value="0.259375" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/BasicMP33/app/src/main/res/layout/activity_songs.xml" value="0.22133333333333333" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/BasicMP33/app/src/main/res/layout/music_view.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/activity_main.xml" value="0.21842105263157896" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/activity_song_list.xml" value="0.21842105263157896" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/benimuygulamalar/KotlinBasitMuzikCalar/app/src/main/res/layout/recycle_layout.xml" value="0.21842105263157896" />

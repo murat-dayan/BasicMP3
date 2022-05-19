@@ -13,21 +13,20 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
+import com.example.kotlinbasitmuzikcalar.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mp:MediaPlayer
     private var totalTime:Int=0
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        izinİste()
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-
+        initalize()
         mp= MediaPlayer.create(this,R.raw.senikaybettigimde)
 
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         totalTime=mp.duration
 
         // volume Bar
-        volumeBar.setOnSeekBarChangeListener(
+        binding.volumeBar.setOnSeekBarChangeListener(
             object :SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
@@ -62,8 +61,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         // position Bar
-        positionBar.max=totalTime
-        positionBar.setOnSeekBarChangeListener(
+        binding.positionBar.max=totalTime
+        binding.positionBar.setOnSeekBarChangeListener(
             object :SeekBar.OnSeekBarChangeListener{
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
@@ -101,6 +100,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         }).start()
+
+        binding.songLists.setOnClickListener {
+            startActivity(Intent(this@MainActivity,Songs::class.java))
+        }
     }
 
     @SuppressLint("HandlerLeak")
@@ -109,14 +112,14 @@ class MainActivity : AppCompatActivity() {
             var currentPosition=msg.what
 
             // update positionbar
-            positionBar.progress=currentPosition
+            binding.positionBar.progress=currentPosition
 
             // update labels
             var elapsedTime=createTimeLabel(currentPosition)
-            elapsedTimeLabel.text=elapsedTime
+            binding.elapsedTimeLabel.text=elapsedTime
 
             var remainingTime=createTimeLabel(totalTime-currentPosition)
-            remainingTimeLabel.text="-$remainingTime"
+            binding.remainingTimeLabel.text="-$remainingTime"
         }
 
     }
@@ -137,19 +140,15 @@ class MainActivity : AppCompatActivity() {
         if (mp.isPlaying){
             // durdurma
             mp.pause()
-            playBtn.setBackgroundResource(R.drawable.play)
+            binding.playBtn.setBackgroundResource(R.drawable.play)
         }else{
             // başlatma
             mp.start()
-            playBtn.setBackgroundResource(R.drawable.stop)
+            binding.playBtn.setBackgroundResource(R.drawable.stop)
         }
     }
 
-    fun showSongList(v:View){
-        val intent=Intent(this,SongList::class.java)
-        startActivity(intent)
 
-    }
 
     private fun izinİste(){
         if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
@@ -172,4 +171,12 @@ class MainActivity : AppCompatActivity() {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+    private fun initalize(){
+        izinİste()
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+
 }
