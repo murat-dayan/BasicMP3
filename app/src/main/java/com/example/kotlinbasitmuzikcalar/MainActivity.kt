@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.view.MenuItem
 import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
 import com.example.kotlinbasitmuzikcalar.databinding.ActivityMainBinding
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mp:MediaPlayer
     private var totalTime:Int=0
+    private lateinit var toggle: ActionBarDrawerToggle
 
 
 
@@ -27,6 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         initalize()
+
+        toggle=ActionBarDrawerToggle(this,binding.root,R.string.open,R.string.close)
+        binding.root.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         mp= MediaPlayer.create(this,R.raw.senikaybettigimde)
 
 
@@ -104,6 +113,8 @@ class MainActivity : AppCompatActivity() {
         binding.songLists.setOnClickListener {
             startActivity(Intent(this@MainActivity,Songs::class.java))
         }
+
+
     }
 
     @SuppressLint("HandlerLeak")
@@ -176,6 +187,15 @@ class MainActivity : AppCompatActivity() {
         izinİste()
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 

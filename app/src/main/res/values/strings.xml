@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Kotlin Basit Muzik Calar</string>
+    <string name="app_name">Mobile Mordecai MP3 Çalar</string>
     <string name="song_name">Song Name</string>
     <string name="sanatci_ismi">Sanatci İsmi</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
